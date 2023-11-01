@@ -1,7 +1,13 @@
-import React,{useCallback,useState} from 'react'
+import React, { useState, useCallback } from 'react';
 
-const useToggle = () => {
-   
-  
-  }
-  export default useToggle;
+const useToggle = (initialState = false) => {
+  const [isToggled, setIsToggled] = useState(initialState);
+
+  const toggle = useCallback(() => {
+    setIsToggled((prevState) => !prevState);
+  }, []);
+
+  return [isToggled, toggle];
+};
+
+export default useToggle;
